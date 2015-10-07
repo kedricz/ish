@@ -1,0 +1,33 @@
+#Begin ~/.ishrc
+
+# User specific aliases and functions
+
+# Source global definitions
+if [ -f "/etc/ishrc" ]; then
+  source /etc/ishrc
+fi
+
+# create a log of all users who logged in,
+# and those currently logged in
+see_all()
+{
+LOG_FILE=/var/log/see_all
+echo `date` >> $LOG_FILE
+echo "Recent users to log in: " >> $LOG_FILE
+last | head -10 >> $LOG_FILE
+echo "Users who are currently online: " >> $LOG_FILE
+who >> $LOG_FILE
+} 
+
+
+set histroy=50
+set savehist=50
+
+# no pine-debug[?]
+alias pine='pine -d0'
+
+# special ls
+alias ls='ls -aF --color'
+
+
+# End ~/.ishrc
